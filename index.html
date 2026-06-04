@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia Estelar — Trivia del Saber</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Canvas de fondo (estrellas) -->
+  <canvas id="bg-canvas"></canvas>
+  <!-- Canvas de celebración (confeti / guirnaldas) -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ============================================================
+       PANTALLA 1: BIENVENIDA
+       ============================================================ -->
+  <section id="screen-welcome" class="screen active">
+    <div class="welcome-inner">
+      <span class="title-badge">🎓</span>
+      <h1 class="game-title">
+        Academia
+        <span class="accent">Estelar</span>
+      </h1>
+      <p class="tagline">El gran desafío del conocimiento</p>
+      <button id="btn-start" class="btn-principal">¡COMENZAR DESAFÍO!</button>
+      <p class="welcome-hint">
+        Responde correctamente 3 preguntas de distintas áreas<br>
+        y serás proclamado <strong>Abanderado Honoris Causa</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PANTALLA 2: SELECCIÓN DE ÁREA
+       ============================================================ -->
+  <section id="screen-subject-select" class="screen">
+    <div class="select-inner">
+      <h2 class="select-heading">Elige tu primera área</h2>
+      <p class="select-sub">La segunda y la tercera serán una sorpresa</p>
+
+      <div class="subjects-grid">
+
+        <button class="subject-card" data-subject="sociales">
+          <span class="card-icon">🌍</span>
+          <span class="card-label">Ciencias Sociales</span>
+        </button>
+
+        <button class="subject-card" data-subject="naturales">
+          <span class="card-icon">🔬</span>
+          <span class="card-label">Ciencias Naturales</span>
+        </button>
+
+        <button class="subject-card" data-subject="lengua">
+          <span class="card-icon">📚</span>
+          <span class="card-label">Lengua y Literatura</span>
+        </button>
+
+        <button class="subject-card" data-subject="matematicas">
+          <span class="card-icon">📐</span>
+          <span class="card-label">Matemáticas</span>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PANTALLA 3: PREGUNTA
+       ============================================================ -->
+  <section id="screen-question" class="screen">
+    <div class="question-card">
+
+      <!-- Header: área + puntos de progreso -->
+      <div class="question-top">
+        <div class="q-subject-badge">
+          <span id="q-icon">🌍</span>
+          <span id="q-name">Ciencias Sociales</span>
+        </div>
+        <div class="round-dots" aria-label="Progreso">
+          <span class="dot" title="Pregunta 1"></span>
+          <span class="dot" title="Pregunta 2"></span>
+          <span class="dot" title="Pregunta 3"></span>
+        </div>
+      </div>
+
+      <!-- Texto de la pregunta -->
+      <div class="question-body">
+        <p id="question-text"></p>
+      </div>
+
+      <!-- Barra de retroalimentación (correcto / incorrecto) -->
+      <div id="feedback-bar" class="feedback-bar"></div>
+
+      <!-- Opciones de respuesta (generadas por JS) -->
+      <div id="options-container" class="options-container"></div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PANTALLA 4: VICTORIA 🏆
+       ============================================================ -->
+  <section id="screen-win" class="screen">
+    <div class="result-inner">
+      <span class="win-trophy">🏆</span>
+      <h2 class="win-title">¡GANASTE!</h2>
+      <div class="win-badge">
+        🎓&nbsp;&nbsp;Abanderado Honoris Causa del Saber&nbsp;&nbsp;🎓
+      </div>
+      <p class="win-msg">
+        ¡Respondiste las tres preguntas correctamente!<br>
+        Eres una estrella del conocimiento. ¡Felicitaciones!
+      </p>
+      <button id="btn-play-again-win" class="btn-principal">¡JUGAR DE NUEVO!</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PANTALLA 5: DERROTA 💫
+       ============================================================ -->
+  <section id="screen-lose" class="screen">
+    <div class="result-inner">
+      <span class="lose-emoji">💫</span>
+      <h2 class="lose-title">¡SIGUE PARTICIPANDO!</h2>
+      <p class="lose-msg">
+        El conocimiento se conquista<br>con práctica y dedicación.
+      </p>
+      <p class="lose-encourage">¡La próxima partida será la tuya!</p>
+      <button id="btn-play-again-lose" class="btn-principal btn-reintentar">
+        ¡INTENTAR DE NUEVO!
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Scripts: primero los datos, luego la lógica
+       ============================================================ -->
+  <!-- Bancos de preguntas (un archivo por área) -->
+  <script src="data/lengua.js"></script>
+  <script src="data/matematicas.js"></script>
+  <script src="data/naturales.js"></script>
+  <script src="data/sociales.js"></script>
+
+  <!-- Motor del juego -->
+  <script src="js/audio.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/confetti.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
